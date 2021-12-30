@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="info">
+    <!-- 변수 정의 -->
+    <Properties>
+        <Property name="logLayout">%d{Default} %highlight{[%-5p]}{FATAL=red, ERROR=red,
+            INFO=green, DEBUG=blue} %style{[%t]}{magenta} %style{[%C{3}]}{cyan} - %m%n%throwable
+        </Property>
+    </Properties>
+
+    <!-- 로그가 출력되는 위치 설정 -->
+    <Appenders>
+        <!-- 콘솔에 출력될 로그 설정 -->
+        <!-- name : 설정 이름, target: 로그 타겟 (default: SYSTEM_OUT) -->
+        <Console name="console.log" target="SYSTEM_OUT">
+            <!-- 로깅 패턴 정의 -->
+            <PatternLayout pattern="${logLayout}" charset="UTF-8"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="console.log"/>
+        </Root>
+    </Loggers>
+</Configuration>
