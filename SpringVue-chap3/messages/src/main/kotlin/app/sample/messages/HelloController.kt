@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 @RequestMapping("/")
-class HelloController(val service: MockService) {
+class HelloController() {
     @GetMapping
     @ResponseBody
     fun returnHello(): String{
-        service.printName()
         return "Hello"
     }
 
