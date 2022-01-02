@@ -1,6 +1,5 @@
 package app.sample.messages
 
-import org.apache.logging.log4j.LogManager
 import org.hibernate.SessionFactory
 import org.springframework.stereotype.Repository
 

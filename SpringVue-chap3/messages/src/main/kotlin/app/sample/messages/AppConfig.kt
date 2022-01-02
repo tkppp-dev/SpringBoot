@@ -15,4 +15,9 @@ class AppConfig(val dataSource: DataSource) {
         sessionFactoryBean.setPackagesToScan("app.sample.messages")
         return sessionFactoryBean
     }
+
+    @Bean
+    fun registerBeanTest(): BeanTest {
+        return BeanTest()
+    }
 }
