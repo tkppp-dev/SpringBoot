@@ -5,7 +5,16 @@ module.exports = {
   devServer: {
     port: 3000,
     proxy: {
-      '/api/*': 'http://localhost:8080'
+      '/api/*': {
+        target: 'http://localhost:8080'
+      }
+    }
+  },
+  // bootstrap css apply
+  configureWebpack: {
+    entry: {
+      app: './src/main.js',
+      style: ['bootstrap/dist/css/bootstrap.min.css']
     }
   }
 }
