@@ -2,10 +2,13 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="register-form">
-      <div class="logo-wrapper">
-        <img class="logo" src="/static/images/logo.png" />
-        <div class="tagline">Open source task management tool</div>
-      </div>
+        <div class="logo-wrapper">
+          <img class="logo" src="/static/images/logo.png" />
+          <div class="tagline">Open source task management tool</div>
+        </div>
+        <div v-show="errorMessage" class="alert alert-danger failed">
+          {{ errorMessage }}
+        </div>
         <form @submit.prevent="submitForm">
           <div class="form-group">
             <label for="username">Username</label>
@@ -58,6 +61,8 @@
   </div>
 </template>
 <script>
+import registrationService from '@/services/registration/index';
+
 export default {
   name: 'RegisterPage',
   data() {
@@ -71,7 +76,16 @@ export default {
     };
   },
   methods: {
-    submitForm() {},
+    async submitForm() {
+      try {
+        await registrationService.register(this.form);
+        this.$router.push({ name: 'LoginPage' });
+      } catch (e) {
+        this.errorMessage = `회원가입에 실패했습니다. 사유 : ${
+          e.message ? e.message : '알수 없음'
+        }.`;
+      }
+    },
   },
 };
 </script>
