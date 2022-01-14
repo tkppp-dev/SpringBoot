@@ -77,10 +77,10 @@ export default {
   },
   methods: {
     async submitForm() {
-      try {
-        await registrationService.register(this.form);
-        this.$router.push({ name: 'LoginPage' });
-      } catch (e) {
+      try{
+        await registrationService.register(this.form)
+        this.$router.push({ name: 'LoginPage'})
+      }catch(e){
         this.errorMessage = `회원가입에 실패했습니다. 사유 : ${
           e.message ? e.message : '알수 없음'
         }.`;

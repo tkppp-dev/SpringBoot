@@ -1,8 +1,5 @@
 import { mount } from '@vue/test-utils';
-import router from '@/router';
 import RegisterPage from '@/views/RegisterPage';
-import App from '@/App';
-import { nextTick } from 'vue';
 
 jest.mock('@/services/registration');
 
@@ -18,6 +15,9 @@ describe('RegisterPage.vue', () => {
         mocks: {
           $router: mockRouter,
         },
+        /* or
+        plugins: [router]
+        */
       },
     });
     fieldUsername = wrapper.find('#username');
@@ -28,19 +28,6 @@ describe('RegisterPage.vue', () => {
 
   afterAll(() => {
     jest.restoreAllMocks();
-  });
-
-  it('routing', async () => {
-    const wrapper1 = mount(App, {
-      global: {
-        plugins: [router],
-      },
-    });
-
-    router.push('/login');
-    await router.isReady();
-
-    expect(wrapper1.find('h1').text()).toEqual('TaskAgile');
   });
 
   it('마운트 시, 컨텐츠가 올바르게 렌더링 되어야 한다', () => {
@@ -80,29 +67,25 @@ describe('RegisterPage.vue', () => {
   });
 
   it('폼 제출 이벤트 핸들러에 "submitForm"이 등록되어야 한다.', async () => {
-    const stub = jest.fn();
-    wrapper.vm.submitForm = stub;
+    const spyFn = jest.spyOn(wrapper.vm, 'submitForm')
 
     await buttonSubmit.trigger('submit');
-    expect(stub).toBeCalled();
+    expect(spyFn).toBeCalled();
   });
 
   it('새로운 유저의 경우, 회원가입이 성공해야 한다', async () => {
     wrapper.vm.form.username = 'tkppp';
     wrapper.vm.form.emailAddress = 'gowldla0423@naver.com';
     wrapper.vm.form.password = 'password1';
-    wrapper.vm.submitForm();
-    wrapper.vm.$nextTick(() => {
-      expect(mockRouter.push).toHaveBeenCalledWith({ name: 'LoginPage' });
-    })
+    await buttonSubmit.trigger('submit')
+    expect(mockRouter.push).toHaveBeenCalledWith({ name: 'LoginPage' });
+    
   });
 
-  it('등록된 유저의 경우, 회원가입이 실패해야 한다.', async () => {
+  it('등록된 유저의 경우, 회원가입이 실패하고 실패 메세지를 표시해야 한다.', async () => {
     wrapper.vm.form.emailAddress = 'exist@local';
     expect(wrapper.find('.failed').isVisible()).toBe(false);
-    wrapper.vm.submitForm();
-    wrapper.vm.$nextTick(null, () => {
-      expect(wrapper.find('.failed').isVisible()).toBe(true)
-    })
+    await buttonSubmit.trigger('submit')
+    expect(wrapper.find('.failed').isVisible()).toBe(true);
   });
 });
