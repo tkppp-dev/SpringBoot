@@ -5,9 +5,7 @@ import RegisterPage from '@/views/RegisterPage';
 const routes = [
   {
     path: '/',
-    component: {
-      template: 'root page',
-    },
+    component: RegisterPage
   },
   {
     path: '/login',

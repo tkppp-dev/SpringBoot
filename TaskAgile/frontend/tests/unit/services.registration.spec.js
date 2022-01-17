@@ -36,7 +36,6 @@ describe('services/registration', () => {
     try{
       await registrationService.register();
     }catch(e){
-      console.log(e)
       expect(e.data.message).toEqual('Bad request');
     }
   });
