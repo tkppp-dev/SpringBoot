@@ -94,6 +94,7 @@ describe('RegisterPage.vue', () => {
     expect(mockRouter.push).toHaveBeenCalledWith({ name: 'LoginPage' });
   });
 
+
   it('등록된 유저의 경우, 회원가입이 실패하고 실패 메세지를 표시해야 한다.', async () => {
     await fieldUsername.setValue('testName');
     await fieldPassword.setValue('password');
