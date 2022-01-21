@@ -9,7 +9,7 @@ data class RegistrationPayload(
     @field:NotEmpty
     var username: String? = null,
 
-    @field:Email(message = "이메일 형식이 올바러야 한다.")
+    @field:Email(message = "이메일 형식이 올바라야 한다.")
     @field:Size(max = 100, message = "이메일 주소는 최대 100자 이하여야 한다.")
     @field:NotEmpty
     var emailAddress: String? = null,
