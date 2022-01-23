@@ -6,15 +6,12 @@ import org.junit.jupiter.api.Test
 import javax.validation.Validation
 import javax.validation.Validator
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.boot.test.context.SpringBootTest
 import org.assertj.core.api.Assertions.assertThat
 
 @SpringBootTest
 class RegistrationPayloadTests() {
     lateinit var validator: Validator
-    val log: Logger = LoggerFactory.getLogger(RegistrationPayloadTests::class.java)
 
     @BeforeEach
     fun setup() {
