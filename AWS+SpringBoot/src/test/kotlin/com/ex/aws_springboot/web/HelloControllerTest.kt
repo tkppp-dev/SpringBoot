@@ -1,6 +1,6 @@
 package com.ex.aws_springboot.web
 
-import com.ex.aws_springboot.web.domain.posts.TestService
+import com.ex.aws_springboot.domain.post.TestService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest

@@ -1,7 +1,7 @@
 package com.ex.aws_springboot.domain.post
 
-import com.ex.aws_springboot.web.domain.posts.Post
-import com.ex.aws_springboot.web.domain.posts.PostRepository
+import com.ex.aws_springboot.domain.post.Post
+import com.ex.aws_springboot.domain.post.PostRepository
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

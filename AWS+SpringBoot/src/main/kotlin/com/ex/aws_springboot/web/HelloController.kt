@@ -1,6 +1,6 @@
 package com.ex.aws_springboot.web
 
-import com.ex.aws_springboot.web.domain.posts.TestService
+import com.ex.aws_springboot.domain.post.TestService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController

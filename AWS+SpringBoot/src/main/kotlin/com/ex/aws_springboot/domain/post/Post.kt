@@ -1,4 +1,4 @@
-package com.ex.aws_springboot.web.domain.posts
+package com.ex.aws_springboot.domain.post
 
 import javax.persistence.*
 
@@ -9,10 +9,10 @@ class Post(
     val id: Long? = null,
 
     @Column(length = 500, nullable = false)
-    val title: String,
+    var title: String,
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    val content: String,
+    var content: String,
 
     val author: String? = null
 ) {
