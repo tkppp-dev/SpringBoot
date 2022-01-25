@@ -15,5 +15,4 @@ class Post(
     var content: String,
 
     val author: String? = null
-) {
-}
+)
