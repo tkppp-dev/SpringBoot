@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.http.*
+import java.time.LocalDateTime
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PostApiControllerTest2(
@@ -81,7 +82,7 @@ class PostApiControllerTest2(
                 content = content
             )
         )
-
+        val baseTime = LocalDateTime.now()
         val updateId = post.id
         val url = "http://localhost:${port}/api/v1/post/$updateId"
         val updatedTitle = "updated title"
@@ -100,5 +101,7 @@ class PostApiControllerTest2(
         post = postRepository.findAll().first()
         assertThat(post.title).isEqualTo(updatedTitle)
         assertThat(post.content).isEqualTo(updatedContent)
+        assertThat(post.createdAt).isBefore(baseTime)
+        assertThat(post.modifiedAt).isAfter(baseTime)
     }
 }

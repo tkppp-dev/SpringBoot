@@ -22,7 +22,6 @@ class PostService(
 
         post.title = requestDto.title
         post.content = requestDto.content
-        post.modifiedAt = LocalDateTime.now()
 
         return id
     }

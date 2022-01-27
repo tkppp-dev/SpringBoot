@@ -1,5 +1,6 @@
 package com.ex.aws_springboot.domain.post
 
+import com.ex.aws_springboot.domain.BaseTimeEntity
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -16,8 +17,4 @@ class Post(
     var content: String,
 
     val author: String? = null,
-
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-
-    var modifiedAt: LocalDateTime = LocalDateTime.now()
-)
+) : BaseTimeEntity()
