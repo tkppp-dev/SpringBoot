@@ -1,5 +1,6 @@
 package com.ex.aws_springboot.domain.post
 
+import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
@@ -14,5 +15,9 @@ class Post(
     @Column(columnDefinition = "TEXT", nullable = false)
     var content: String,
 
-    val author: String? = null
+    val author: String? = null,
+
+    val createdAt: LocalDateTime = LocalDateTime.now(),
+
+    var modifiedAt: LocalDateTime = LocalDateTime.now()
 )

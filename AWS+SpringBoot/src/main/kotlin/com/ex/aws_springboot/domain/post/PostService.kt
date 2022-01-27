@@ -6,6 +6,7 @@ import com.ex.aws_springboot.web.dto.PostUpdateRequestDto
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.time.LocalDateTime
 
 @Service
 class PostService(
@@ -21,6 +22,7 @@ class PostService(
 
         post.title = requestDto.title
         post.content = requestDto.content
+        post.modifiedAt = LocalDateTime.now()
 
         return id
     }
