@@ -34,7 +34,7 @@ public class PostApiControllerTest {
     }
 
     @Test
-    public void Post_shouldRegister() throws Exception{
+    public void post_shouldRegister() throws Exception{
         String title = "title";
         String content = "content";
         PostSaveRequestDto requestDto = PostSaveRequestDto.builder()
